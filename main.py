@@ -60,7 +60,7 @@ while move < 9:
     else:
         print("\nPlayer 2's turn!")
 
-    user_input = input('Where do you want to place your symbol?'
+    user_input = input('Where do you want to place your symbol? Each number corresponds to the tile they reside in.'
                        '\n| 1 | 2 | 3 |'
                        '\n| 4 | 5 | 6 |'
                        '\n| 7 | 8 | 9 |'
