@@ -13,6 +13,43 @@ def draw_board(board: dict) -> str:
     return display
 
 
+def horizontal(board: dict) -> bool:
+    i = 1
+    while i <= 7:
+        if board[i] == board[i + 1] == board[i + 2]:
+            return True
+        else:
+            i += 3
+    return False
+
+
+def vertical(board: dict) -> bool:
+    i = 1
+    while i <= 3:
+        if board[i] == board[i + 3] == board[i + 6]:
+            return True
+        else:
+            i += 1
+    return False
+
+
+def diagonal(board: dict) -> bool:
+    i = 5
+    if board[i] == board[i - 4] == board[i + 4]:
+        return True
+    elif board[i] == board[i - 2] == board[i + 2]:
+        return True
+    else:
+        return False
+
+
+def win(board: dict) -> bool:
+    if horizontal(board) or vertical(board) or diagonal(board):
+        return True
+    else:
+        return False
+
+
 while move < 9:
     if turn:
         print("\nPlayer 1's turn!")
