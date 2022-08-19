@@ -23,7 +23,7 @@ while move < 9:
                        '\n| 1 | 2 | 3 |'
                        '\n| 4 | 5 | 6 |'
                        '\n| 7 | 8 | 9 |'
-                       '\nPlease enter the number of your choice: ')
+                       '\nPlease enter a number from 1 to 9: ')
 
     if int(user_input) not in range(1, 10):
         print("\nInvalid input! Please choose a number from 1 to 9.")
