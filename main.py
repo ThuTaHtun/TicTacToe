@@ -13,46 +13,55 @@ def draw_board(board: dict) -> str:
     return display
 
 
-def horizontal(board: dict) -> bool:
+def horizontal(board: dict) -> int:
     i = 1
     while i <= 7:
-        if board[i] != ' ' and board[i] == board[i + 1] == board[i + 2]:
-            return True
+        if board[i] == board[i + 1] == board[i + 2] == 'O':
+            return 1
+        elif board[i] == board[i + 1] == board[i + 2] == 'X':
+            return 2
         else:
             i += 3
-    return False
+    return 0
 
 
-def vertical(board: dict) -> bool:
+def vertical(board: dict) -> int:
     i = 1
     while i <= 3:
-        if board[i] != ' ' and board[i] == board[i + 3] == board[i + 6]:
-            return True
+        if board[i] == board[i + 3] == board[i + 6] == 'O':
+            return 1
+        elif board[i] == board[i + 3] == board[i + 6] == 'X':
+            return 2
         else:
             i += 1
-    return False
+    return 0
 
 
-def diagonal(board: dict) -> bool:
+def diagonal(board: dict) -> int:
     i = 5
-    if board[i] != ' ' and board[i] == board[i - 4] == board[i + 4]:
-        return True
-    elif board[i] != ' ' and board[i] == board[i - 2] == board[i + 2]:
-        return True
+    if board[i] == board[i - 4] == board[i + 4] == 'O' or board[i] == board[i - 2] == board[i + 2] == 'O':
+        return 1
+    elif board[i] == board[i - 4] == board[i + 4] == 'X' or board[i] == board[i - 2] == board[i + 2] == 'X':
+        return 2
     else:
-        return False
+        return 0
 
 
-def win(board: dict) -> bool:
-    if horizontal(board) or vertical(board) or diagonal(board):
-        return True
+def win(board: dict) -> int:
+    if horizontal(board) == 1 or vertical(board) == 1 or diagonal(board) == 1:
+        return 1
+    elif horizontal(board) == 2 or vertical(board) == 2 or diagonal(board) == 2:
+        return 2
     else:
-        return False
+        return 0
 
 
 while move < 9:
-    if win(board):
-        print("Someone won!")
+    if win(board) == 1:
+        print("Player 1 wins!")
+        break
+    if win(board) == 2:
+        print("Player 2 wins!")
         break
 
     if turn:
